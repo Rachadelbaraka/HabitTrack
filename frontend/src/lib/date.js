@@ -9,6 +9,7 @@ import {
   startOfMonth,
   startOfWeek
 } from 'date-fns';
+import { fr } from 'date-fns/locale';
 
 const resolveDate = (value = new Date()) => {
   if (value instanceof Date) {
@@ -35,10 +36,10 @@ export const getTrackingKey = (value, frequency = 'daily') => {
   return toDayKey(date);
 };
 
-export const formatLongDate = (value) => format(resolveDate(value), 'EEEE, MMMM d');
-export const formatMediumDate = (value) => format(resolveDate(value), 'MMM d, yyyy');
-export const formatMonthTitle = (value) => format(resolveDate(value), 'MMMM yyyy');
-export const formatWeekday = (value) => format(resolveDate(value), 'EEE');
+export const formatLongDate = (value) => format(resolveDate(value), 'EEEE d MMMM', { locale: fr });
+export const formatMediumDate = (value) => format(resolveDate(value), 'd MMM yyyy', { locale: fr });
+export const formatMonthTitle = (value) => format(resolveDate(value), 'MMMM yyyy', { locale: fr });
+export const formatWeekday = (value) => format(resolveDate(value), 'EEE', { locale: fr });
 export const isTodayKey = (value) => isToday(resolveDate(value));
 export const isSameMonthValue = (value, reference) => isSameMonth(resolveDate(value), resolveDate(reference));
 

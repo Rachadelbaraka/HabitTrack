@@ -6,11 +6,11 @@ export const protect = async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader?.startsWith('Bearer ')) {
-    return res.status(401).json({ message: 'Not authorized. Missing token.' });
+    return res.status(401).json({ message: 'Non autorisé. Jeton manquant.' });
   }
 
   if (!isDatabaseReady()) {
-    return res.status(503).json({ message: 'Database unavailable. Please use offline mode.' });
+    return res.status(503).json({ message: 'Base de données indisponible. Veuillez utiliser le mode hors ligne.' });
   }
 
   try {
@@ -19,12 +19,12 @@ export const protect = async (req, res, next) => {
     const user = await User.findById(decoded.userId).select('-password');
 
     if (!user) {
-      return res.status(401).json({ message: 'User not found for this token.' });
+      return res.status(401).json({ message: 'Aucun utilisateur trouvé pour ce jeton.' });
     }
 
     req.user = user;
     next();
   } catch (error) {
-    return res.status(401).json({ message: 'Token is invalid or expired.' });
+    return res.status(401).json({ message: 'Le jeton est invalide ou expiré.' });
   }
 };

@@ -13,7 +13,7 @@ function FullScreenLoader() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-slate-100 dark:bg-slate-950">
       <div className="rounded-3xl border border-slate-200 bg-white px-6 py-5 text-sm font-medium text-slate-600 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
-        Loading HabitTrack…
+        Chargement de HabitTrack…
       </div>
     </div>
   );

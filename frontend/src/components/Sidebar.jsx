@@ -12,11 +12,11 @@ import { NavLink } from 'react-router-dom';
 import { useAppStore } from '../store/useAppStore';
 
 const navigation = [
-  { to: '/', label: 'Dashboard', icon: LayoutDashboard },
-  { to: '/today', label: 'Today', icon: CheckCheck },
-  { to: '/calendar', label: 'Calendar', icon: CalendarDays },
-  { to: '/statistics', label: 'Statistics', icon: BarChart3 },
-  { to: '/settings', label: 'Settings', icon: Settings }
+  { to: '/', label: 'Tableau de bord', icon: LayoutDashboard },
+  { to: '/today', label: "Aujourd'hui", icon: CheckCheck },
+  { to: '/calendar', label: 'Calendrier', icon: CalendarDays },
+  { to: '/statistics', label: 'Statistiques', icon: BarChart3 },
+  { to: '/settings', label: 'Paramètres', icon: Settings }
 ];
 
 export function Sidebar() {
@@ -26,8 +26,8 @@ export function Sidebar() {
     <aside className="hidden w-72 shrink-0 border-r border-slate-200 bg-white/80 px-5 py-6 backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/80 md:flex md:flex-col">
       <div className="mb-8 rounded-3xl bg-slate-900 p-4 text-white shadow-xl dark:bg-slate-900">
         <p className="text-xs uppercase tracking-[0.28em] text-slate-300">HabitTrack</p>
-        <h1 className="mt-2 text-2xl font-semibold">Daily journal SaaS</h1>
-        <p className="mt-2 text-sm text-slate-300">Track habits, write reflections, and stay consistent.</p>
+        <h1 className="mt-2 text-2xl font-semibold">Journal quotidien & habitudes</h1>
+        <p className="mt-2 text-sm text-slate-300">Suivez vos habitudes, écrivez vos réflexions et restez régulier.</p>
       </div>
 
       <div className="mb-6 rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900/70">
@@ -37,7 +37,7 @@ export function Sidebar() {
             <p className="text-xs text-slate-500 dark:text-slate-400">{user?.email}</p>
           </div>
           <span className="rounded-full bg-emerald-500/10 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-300">
-            {offlineMode ? 'Offline' : 'Online'}
+            {offlineMode ? 'Hors ligne' : 'En ligne'}
           </span>
         </div>
       </div>
@@ -74,7 +74,7 @@ export function Sidebar() {
         >
           <span className="flex items-center gap-3">
             {theme === 'dark' ? <SunMedium size={18} /> : <MoonStar size={18} />}
-            {theme === 'dark' ? 'Light mode' : 'Dark mode'}
+            {theme === 'dark' ? 'Mode clair' : 'Mode sombre'}
           </span>
         </button>
 
@@ -84,7 +84,7 @@ export function Sidebar() {
           className="flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium text-rose-600 transition hover:bg-rose-50 dark:hover:bg-rose-500/10"
         >
           <LogOut size={18} />
-          Log out
+          Se déconnecter
         </button>
       </div>
     </aside>

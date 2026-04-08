@@ -17,7 +17,7 @@ const shouldFallback = (error) => {
 };
 
 const normalizeError = (error) => {
-  const message = error?.response?.data?.message || error.message || 'Unexpected request error.';
+  const message = error?.response?.data?.message || error.message || 'Erreur inattendue lors de la requête.';
   return new Error(message);
 };
 

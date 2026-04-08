@@ -4,7 +4,7 @@ import { isDatabaseReady } from '../config/db.js';
 
 const ensureDatabase = (res) => {
   if (!isDatabaseReady()) {
-    res.status(503).json({ message: 'Database unavailable. Please use offline mode.' });
+    res.status(503).json({ message: 'Base de données indisponible. Veuillez utiliser le mode hors ligne.' });
     return false;
   }
 

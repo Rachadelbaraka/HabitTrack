@@ -13,21 +13,21 @@ export function DashboardPage() {
   return (
     <div className="space-y-6">
       <section className="grid gap-4 xl:grid-cols-4 md:grid-cols-2">
-        <StatCard icon={Flame} label="Current streak" value={`${stats.streak} day${stats.streak === 1 ? '' : 's'}`} hint="Perfect completion days in a row." accent="from-orange-500 to-rose-500" />
-        <StatCard icon={Target} label="Monthly completion" value={`${stats.completionRate}%`} hint="Average completion over the last 30 days." accent="from-sky-500 to-cyan-500" />
-        <StatCard icon={Sparkles} label="Today" value={`${todayProgress.completed}/${todayProgress.total || 0}`} hint="Habits completed for the selected day." accent="from-violet-500 to-indigo-500" />
-        <StatCard icon={NotebookPen} label="Journal consistency" value={`${stats.journalDays} entries`} hint="Days you captured thoughts and reflections." accent="from-emerald-500 to-teal-500" />
+        <StatCard icon={Flame} label="Série actuelle" value={`${stats.streak} jour${stats.streak === 1 ? '' : 's'}`} hint="Jours parfaits consécutifs." accent="from-orange-500 to-rose-500" />
+        <StatCard icon={Target} label="Taux mensuel" value={`${stats.completionRate}%`} hint="Moyenne de réussite sur les 30 derniers jours." accent="from-sky-500 to-cyan-500" />
+        <StatCard icon={Sparkles} label="Aujourd'hui" value={`${todayProgress.completed}/${todayProgress.total || 0}`} hint="Habitudes validées pour le jour sélectionné." accent="from-violet-500 to-indigo-500" />
+        <StatCard icon={NotebookPen} label="Régularité du journal" value={`${stats.journalDays} entrées`} hint="Jours où vous avez écrit une réflexion." accent="from-emerald-500 to-teal-500" />
       </section>
 
       <section className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
           <div className="mb-4 flex items-center justify-between">
             <div>
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white">7-day rhythm</h3>
-              <p className="text-sm text-slate-500 dark:text-slate-400">A quick view of how steadily you are showing up.</p>
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Rythme sur 7 jours</h3>
+              <p className="text-sm text-slate-500 dark:text-slate-400">Un aperçu rapide de votre régularité.</p>
             </div>
             <span className="rounded-full bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-600 dark:bg-violet-500/10 dark:text-violet-200">
-              Best: {stats.bestDay.label}
+              Meilleur : {stats.bestDay.label}
             </span>
           </div>
 
@@ -45,15 +45,15 @@ export function DashboardPage() {
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-          <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Journal preview</h3>
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Aperçu du journal</h3>
           <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
             {todayEntry.trim()
               ? todayEntry.slice(0, 220)
-              : 'No entry yet for the selected day. Use the Today page to start writing.'}
+              : "Aucune entrée pour ce jour. Utilisez l'onglet Aujourd'hui pour écrire."}
           </p>
           <div className="mt-4 rounded-2xl bg-slate-50 p-4 text-sm text-slate-600 dark:bg-slate-950 dark:text-slate-300">
-            <p className="font-semibold text-slate-900 dark:text-white">Premium feel, practical flow</p>
-            <p className="mt-2">Use the calendar for history, statistics for trends, and settings for theme/export controls.</p>
+            <p className="font-semibold text-slate-900 dark:text-white">Expérience premium, usage simple</p>
+            <p className="mt-2">Utilisez le calendrier pour l'historique, les statistiques pour les tendances et les paramètres pour le thème et l'export.</p>
           </div>
         </motion.div>
       </section>
@@ -67,7 +67,7 @@ export function DashboardPage() {
               </div>
               <div>
                 <p className="font-semibold text-slate-900 dark:text-white">{habit.name}</p>
-                <p className="text-sm text-slate-500 dark:text-slate-400">{habit.frequency} • reminder {habit.reminderTime || 'off'}</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400">{habit.frequency === 'daily' ? 'quotidienne' : 'hebdomadaire'} • rappel {habit.reminderTime || 'désactivé'}</p>
               </div>
             </div>
           </motion.div>

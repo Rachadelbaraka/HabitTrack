@@ -11,16 +11,16 @@ export function StatisticsPage() {
   return (
     <div className="space-y-6">
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <StatCard icon={Flame} label="Streak" value={`${stats.streak} days`} hint="Consecutive perfect days." accent="from-orange-500 to-rose-500" />
-        <StatCard icon={TrendingUp} label="Completion rate" value={`${stats.completionRate}%`} hint="Average consistency across 30 days." accent="from-sky-500 to-cyan-500" />
-        <StatCard icon={TrendingUp} label="Journal days" value={stats.journalDays} hint="Days with a written reflection." accent="from-emerald-500 to-teal-500" />
-        <StatCard icon={TrendingUp} label="Best day" value={stats.bestDay.label} hint={`${stats.bestDay.percent}% completion`} accent="from-violet-500 to-indigo-500" />
+        <StatCard icon={Flame} label="Série" value={`${stats.streak} jours`} hint="Jours parfaits consécutifs." accent="from-orange-500 to-rose-500" />
+        <StatCard icon={TrendingUp} label="Taux de réussite" value={`${stats.completionRate}%`} hint="Moyenne de régularité sur 30 jours." accent="from-sky-500 to-cyan-500" />
+        <StatCard icon={TrendingUp} label="Jours avec journal" value={stats.journalDays} hint="Jours avec une note écrite." accent="from-emerald-500 to-teal-500" />
+        <StatCard icon={TrendingUp} label="Meilleur jour" value={stats.bestDay.label} hint={`${stats.bestDay.percent}% de réussite`} accent="from-violet-500 to-indigo-500" />
       </section>
 
       <section className="grid gap-6 xl:grid-cols-2">
         <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-          <h3 className="text-lg font-semibold text-slate-900 dark:text-white">30-day trend</h3>
-          <p className="mb-4 text-sm text-slate-500 dark:text-slate-400">Completion percentage over the last month.</p>
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Tendance sur 30 jours</h3>
+          <p className="mb-4 text-sm text-slate-500 dark:text-slate-400">Pourcentage de réussite sur le dernier mois.</p>
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={stats.monthlyTrend}>
@@ -41,8 +41,8 @@ export function StatisticsPage() {
         </div>
 
         <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-          <h3 className="text-lg font-semibold text-slate-900 dark:text-white">7-day breakdown</h3>
-          <p className="mb-4 text-sm text-slate-500 dark:text-slate-400">Completed habits each day.</p>
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Détail sur 7 jours</h3>
+          <p className="mb-4 text-sm text-slate-500 dark:text-slate-400">Habitudes validées chaque jour.</p>
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={stats.weeklyTrend}>

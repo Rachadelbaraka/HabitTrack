@@ -54,8 +54,8 @@ export function TodayPage() {
         <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-white">Track today</h3>
-              <p className="text-sm text-slate-500 dark:text-slate-400">{progress.completed}/{progress.total || 0} habits complete • {progress.percent}% done</p>
+              <h3 className="text-xl font-semibold text-slate-900 dark:text-white">Suivi du jour</h3>
+              <p className="text-sm text-slate-500 dark:text-slate-400">{progress.completed}/{progress.total || 0} habitudes terminées • {progress.percent}%</p>
             </div>
             <div className="flex flex-wrap gap-2">
               <input
@@ -73,7 +73,7 @@ export function TodayPage() {
                 className="inline-flex items-center gap-2 rounded-2xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white dark:bg-violet-500"
               >
                 <Plus size={16} />
-                New habit
+                Nouvelle habitude
               </button>
             </div>
           </div>
@@ -94,7 +94,7 @@ export function TodayPage() {
           <div className="mt-5 space-y-3">
             {habits.length === 0 ? (
               <div className="rounded-3xl border border-dashed border-slate-300 px-5 py-10 text-center text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">
-                No habits yet. Add your first one to begin the streak.
+                Aucune habitude pour l'instant. Ajoutez-en une pour commencer votre série.
               </div>
             ) : (
               habits.map((habit) => {
@@ -110,7 +110,7 @@ export function TodayPage() {
                     onDrop={() => handleDrop(habit._id)}
                     className="flex items-center gap-3 rounded-3xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-950"
                   >
-                    <button type="button" className="cursor-grab text-slate-400" aria-label="Reorder habit">
+                    <button type="button" className="cursor-grab text-slate-400" aria-label="Réordonner l'habitude">
                       <GripVertical size={18} />
                     </button>
 
@@ -127,7 +127,7 @@ export function TodayPage() {
                       <p className={`font-semibold ${completed ? 'text-emerald-600 line-through dark:text-emerald-300' : 'text-slate-900 dark:text-white'}`}>
                         {habit.name}
                       </p>
-                      <p className="text-sm text-slate-500 dark:text-slate-400">{habit.frequency} • reminder {habit.reminderTime || 'off'}</p>
+                      <p className="text-sm text-slate-500 dark:text-slate-400">{habit.frequency === 'daily' ? 'quotidienne' : 'hebdomadaire'} • rappel {habit.reminderTime || 'désactivé'}</p>
                     </div>
 
                     <div className="flex gap-2">

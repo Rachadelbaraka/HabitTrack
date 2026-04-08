@@ -1,4 +1,5 @@
 import { eachDayOfInterval, format, subDays } from 'date-fns';
+import { fr } from 'date-fns/locale';
 import { getTrackingKey, toDayKey } from './date';
 
 export const isHabitCompleteForDate = (habit, date) => {
@@ -24,7 +25,7 @@ export const buildTrendData = (habits = [], days = 7, endDate = new Date()) => {
     const progress = buildDailyProgress(habits, date);
 
     return {
-      label: format(date, 'MMM d'),
+      label: format(date, 'd MMM', { locale: fr }),
       date: toDayKey(date),
       ...progress
     };

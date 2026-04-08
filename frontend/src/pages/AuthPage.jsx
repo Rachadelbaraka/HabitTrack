@@ -33,16 +33,16 @@ export function AuthPage() {
       <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[0.95fr_1.05fr]">
         <motion.section initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} className="rounded-[2rem] bg-slate-900 p-8 text-white shadow-2xl shadow-slate-900/20">
           <p className="text-xs uppercase tracking-[0.32em] text-slate-300">HabitTrack</p>
-          <h1 className="mt-4 text-4xl font-semibold">Habit tracker + daily journal</h1>
+          <h1 className="mt-4 text-4xl font-semibold">Suivi d'habitudes + journal quotidien</h1>
           <p className="mt-4 max-w-md text-slate-300">
-            A polished productivity space with habits, journaling, analytics, dark mode, offline fallback and export tools.
+            Un espace productif élégant avec habitudes, journal, analyses, mode sombre, fonctionnement hors ligne et export des données.
           </p>
 
           <div className="mt-8 space-y-3 text-sm text-slate-300">
-            <p>✅ Daily and weekly habits</p>
-            <p>📝 Autosaving journal</p>
-            <p>📊 Streaks and completion analytics</p>
-            <p>📦 Offline-first demo fallback</p>
+            <p>✅ Habitudes quotidiennes et hebdomadaires</p>
+            <p>📝 Journal avec sauvegarde auto</p>
+            <p>📊 Séries et statistiques de progression</p>
+            <p>📦 Mode démo hors ligne intégré</p>
           </div>
         </motion.section>
 
@@ -57,7 +57,7 @@ export function AuthPage() {
                   mode === item ? 'bg-white text-slate-900 shadow-sm dark:bg-slate-800 dark:text-white' : 'text-slate-500 dark:text-slate-400'
                 }`}
               >
-                {item}
+                {item === 'login' ? 'Connexion' : 'Inscription'}
               </button>
             ))}
           </div>
@@ -65,7 +65,7 @@ export function AuthPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             {mode === 'register' ? (
               <label className="block text-sm text-slate-600 dark:text-slate-300">
-                Full name
+                Nom complet
                 <input
                   required
                   value={form.name}
@@ -87,7 +87,7 @@ export function AuthPage() {
             </label>
 
             <label className="block text-sm text-slate-600 dark:text-slate-300">
-              Password
+              Mot de passe
               <input
                 required
                 type="password"
@@ -100,13 +100,13 @@ export function AuthPage() {
             {error ? <p className="rounded-2xl bg-rose-50 px-4 py-3 text-sm text-rose-600 dark:bg-rose-500/10">{error}</p> : null}
 
             <button type="submit" disabled={busy} className="w-full rounded-2xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white dark:bg-violet-500 disabled:opacity-60">
-              {busy ? 'Please wait…' : mode === 'login' ? 'Sign in' : 'Create account'}
+              {busy ? 'Veuillez patienter…' : mode === 'login' ? 'Se connecter' : 'Créer un compte'}
             </button>
           </form>
 
           <div className="mt-6 rounded-2xl bg-slate-50 p-4 text-sm text-slate-600 dark:bg-slate-950 dark:text-slate-300">
-            <p className="font-semibold text-slate-900 dark:text-white">Quick demo</p>
-            <p className="mt-1">Use <code>demo@habittrack.app</code> / <code>demo12345</code> to try the offline fallback instantly.</p>
+            <p className="font-semibold text-slate-900 dark:text-white">Démo rapide</p>
+            <p className="mt-1">Utilisez <code>demo@habittrack.app</code> / <code>demo12345</code> pour tester immédiatement le mode hors ligne.</p>
           </div>
         </motion.section>
       </div>

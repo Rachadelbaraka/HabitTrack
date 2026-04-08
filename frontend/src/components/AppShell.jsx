@@ -5,11 +5,11 @@ import { useAppStore } from '../store/useAppStore';
 import { formatLongDate } from '../lib/date';
 
 const mobileNav = [
-  { to: '/', label: 'Dashboard', icon: LayoutDashboard },
-  { to: '/today', label: 'Today', icon: CheckCheck },
-  { to: '/calendar', label: 'Calendar', icon: CalendarDays },
-  { to: '/statistics', label: 'Statistics', icon: BarChart3 },
-  { to: '/settings', label: 'Settings', icon: Settings }
+  { to: '/', label: 'Tableau de bord', icon: LayoutDashboard },
+  { to: '/today', label: "Aujourd'hui", icon: CheckCheck },
+  { to: '/calendar', label: 'Calendrier', icon: CalendarDays },
+  { to: '/statistics', label: 'Statistiques', icon: BarChart3 },
+  { to: '/settings', label: 'Paramètres', icon: Settings }
 ];
 
 export function AppShell() {
@@ -24,11 +24,11 @@ export function AppShell() {
           <header className="sticky top-0 z-20 border-b border-slate-200 bg-slate-100/80 px-4 py-4 backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/80 md:px-8">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="text-xs uppercase tracking-[0.28em] text-slate-500 dark:text-slate-400">Daily view</p>
+                <p className="text-xs uppercase tracking-[0.28em] text-slate-500 dark:text-slate-400">Vue du jour</p>
                 <h2 className="mt-1 text-xl font-semibold">{formatLongDate(selectedDate)}</h2>
               </div>
               <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-600 shadow-sm dark:bg-slate-900 dark:text-slate-300">
-                {offlineMode ? 'Offline fallback enabled' : 'API connected'}
+                {offlineMode ? 'Mode hors ligne activé' : 'API connectée'}
               </span>
             </div>
 

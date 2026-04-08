@@ -6,7 +6,7 @@ export function CalendarGrid({ days, referenceMonth, selectedDate, onSelect, hab
   return (
     <div className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
       <div className="mb-3 grid grid-cols-7 gap-2">
-        {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day) => (
+        {['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'].map((day) => (
           <p key={day} className="px-2 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
             {day}
           </p>
@@ -53,7 +53,7 @@ export function CalendarGrid({ days, referenceMonth, selectedDate, onSelect, hab
                 />
               </div>
               <p className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">
-                {progress.completed}/{progress.total || 0} habits
+                {progress.completed}/{progress.total || 0} habitudes
               </p>
             </motion.button>
           );

@@ -8,7 +8,7 @@ const starterHabits = (userId) => [
   {
     _id: makeId('habit'),
     userId,
-    name: 'Hydrate',
+    name: 'Boire de l’eau',
     icon: '💧',
     color: '#0ea5e9',
     frequency: 'daily',
@@ -19,7 +19,7 @@ const starterHabits = (userId) => [
   {
     _id: makeId('habit'),
     userId,
-    name: 'Deep work sprint',
+    name: 'Session de travail profond',
     icon: '🎯',
     color: '#8b5cf6',
     frequency: 'daily',
@@ -30,7 +30,7 @@ const starterHabits = (userId) => [
   {
     _id: makeId('habit'),
     userId,
-    name: 'Weekly reflection',
+    name: 'Bilan hebdomadaire',
     icon: '🗓️',
     color: '#22c55e',
     frequency: 'weekly',
@@ -45,7 +45,7 @@ const starterEntries = (userId) => [
     _id: makeId('entry'),
     userId,
     date: toDayKey(new Date()),
-    content: '## Today\nI want to stay consistent, finish one important task, and write a short reflection tonight.',
+    content: "## Aujourd’hui\nJe veux rester régulier, terminer une tâche importante et écrire une courte réflexion ce soir.",
     mood: 'focused',
     updatedAt: new Date().toISOString()
   }
@@ -85,7 +85,7 @@ const ensureDemoAccount = () => {
   const userId = makeId('user');
   const account = {
     id: userId,
-    name: 'Demo User',
+    name: 'Utilisateur démo',
     email: 'demo@habittrack.app',
     password: 'demo12345'
   };
@@ -106,7 +106,7 @@ const getAccountFromToken = (token) => {
   const account = db.accounts.find((item) => item.id === userId);
 
   if (!account) {
-    throw new Error('Local session expired. Please sign in again.');
+    throw new Error('La session locale a expiré. Veuillez vous reconnecter.');
   }
 
   return { db, account };
@@ -127,7 +127,7 @@ export const localDb = {
     const db = readDb();
 
     if (db.accounts.some((account) => account.email === payload.email)) {
-      throw new Error('An account already exists with this email.');
+      throw new Error('Un compte existe déjà avec cette adresse e-mail.');
     }
 
     const userId = makeId('user');
@@ -158,7 +158,7 @@ export const localDb = {
     const account = db.accounts.find((item) => item.email === payload.email);
 
     if (!account || account.password !== payload.password) {
-      throw new Error('Invalid email or password. Try demo@habittrack.app / demo12345.');
+      throw new Error('E-mail ou mot de passe invalide. Essayez demo@habittrack.app / demo12345.');
     }
 
     return {
@@ -215,7 +215,7 @@ export const localDb = {
   deleteHabit(token, habitId) {
     const { db } = getAccountFromToken(token);
     writeDb({ ...db, habits: db.habits.filter((item) => item._id !== habitId) });
-    return { message: 'Habit deleted successfully.' };
+    return { message: 'Habitude supprimée avec succès.' };
   },
 
   toggleHabit(token, habitId, date) {

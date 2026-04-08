@@ -46,17 +46,17 @@ export function CalendarPage() {
       </section>
 
       <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <p className="text-sm text-slate-500 dark:text-slate-400">Selected day</p>
+        <p className="text-sm text-slate-500 dark:text-slate-400">Jour sélectionné</p>
         <h3 className="mt-1 text-xl font-semibold text-slate-900 dark:text-white">{formatLongDate(selectedDate)}</h3>
 
         <div className="mt-4 rounded-3xl bg-slate-50 p-4 dark:bg-slate-950">
-          <p className="text-sm text-slate-500 dark:text-slate-400">Completion snapshot</p>
+          <p className="text-sm text-slate-500 dark:text-slate-400">Aperçu de progression</p>
           <p className="mt-2 text-3xl font-semibold text-slate-900 dark:text-white">{selectedProgress.percent}%</p>
-          <p className="text-sm text-slate-500 dark:text-slate-400">{selectedProgress.completed}/{selectedProgress.total || 0} habits completed</p>
+          <p className="text-sm text-slate-500 dark:text-slate-400">{selectedProgress.completed}/{selectedProgress.total || 0} habitudes terminées</p>
         </div>
 
         <div className="mt-5 rounded-3xl border border-slate-200 p-4 dark:border-slate-800">
-          <p className="text-sm font-semibold text-slate-900 dark:text-white">Habits on this day</p>
+          <p className="text-sm font-semibold text-slate-900 dark:text-white">Habitudes du jour</p>
           <div className="mt-3 space-y-2">
             {habitBreakdown.map((habit) => (
               <div key={habit._id} className="flex items-center justify-between rounded-2xl bg-slate-50 px-3 py-2 text-sm dark:bg-slate-950">
@@ -65,7 +65,7 @@ export function CalendarPage() {
                   {habit.name}
                 </span>
                 <span className={`rounded-full px-2 py-1 text-xs font-semibold ${habit.completed ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-300' : 'bg-rose-500/10 text-rose-600 dark:text-rose-300'}`}>
-                  {habit.completed ? 'Done' : 'Missed'}
+                  {habit.completed ? 'Faite' : 'Manquée'}
                 </span>
               </div>
             ))}
@@ -73,9 +73,9 @@ export function CalendarPage() {
         </div>
 
         <div className="mt-5 rounded-3xl border border-slate-200 p-4 dark:border-slate-800">
-          <p className="text-sm font-semibold text-slate-900 dark:text-white">Journal entry</p>
+          <p className="text-sm font-semibold text-slate-900 dark:text-white">Entrée du journal</p>
           <p className="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">
-            {selectedEntry.trim() || 'No journal entry saved for this day yet.'}
+            {selectedEntry.trim() || "Aucune entrée enregistrée pour ce jour."}
           </p>
         </div>
       </section>

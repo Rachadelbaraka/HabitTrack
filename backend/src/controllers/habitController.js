@@ -3,7 +3,7 @@ import { isDatabaseReady } from '../config/db.js';
 
 const ensureDatabase = (res) => {
   if (!isDatabaseReady()) {
-    res.status(503).json({ message: 'Database unavailable. Please use offline mode.' });
+    res.status(503).json({ message: 'Base de données indisponible. Veuillez utiliser le mode hors ligne.' });
     return false;
   }
 
@@ -43,7 +43,7 @@ export const createHabit = async (req, res) => {
   const { name, icon, color, frequency, reminderTime, order, completions } = req.body;
 
   if (!name) {
-    return res.status(400).json({ message: 'Habit name is required.' });
+    return res.status(400).json({ message: 'Le nom de l’habitude est requis.' });
   }
 
   const lastHabit = await Habit.findOne({ user: req.user._id }).sort({ order: -1 });
@@ -99,7 +99,7 @@ export const deleteHabit = async (req, res) => {
     return res.status(404).json({ message: 'Habit not found.' });
   }
 
-  res.json({ message: 'Habit deleted successfully.' });
+  res.json({ message: 'Habitude supprimée avec succès.' });
 };
 
 export const toggleHabitCompletion = async (req, res) => {
@@ -134,7 +134,7 @@ export const reorderHabits = async (req, res) => {
   const { orderedIds } = req.body;
 
   if (!Array.isArray(orderedIds)) {
-    return res.status(400).json({ message: 'orderedIds must be an array.' });
+    return res.status(400).json({ message: 'orderedIds doit être un tableau.' });
   }
 
   await Promise.all(
