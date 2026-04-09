@@ -9,6 +9,7 @@
     "dev:backend": "npm run dev --prefix backend",
     "dev:frontend": "npm run dev --prefix frontend",
     "build": "npm run build --prefix frontend",
+    "build:full": "npm run install:all && npm run build",
     "start": "npm start --prefix backend"
   },
   "repository": {

@@ -1,15 +1,20 @@
 import axios from 'axios';
 import { localDb } from './local-db';
 
+const hasCustomApiUrl = Boolean(import.meta.env.VITE_API_URL);
+const isGithubPages = typeof window !== 'undefined' && window.location.hostname.endsWith('github.io');
+const preferLocalMode = isGithubPages && !hasCustomApiUrl;
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  baseURL: hasCustomApiUrl ? import.meta.env.VITE_API_URL : '/api',
   timeout: 8000
 });
 
 const isLocalToken = (token) => String(token || '').startsWith('local-');
+const shouldUseLocalDb = (token) => preferLocalMode || isLocalToken(token);
 
 const shouldFallback = (error) => {
-  if (!error.response) {
+  if (preferLocalMode || !error.response) {
     return true;
   }
 
@@ -32,6 +37,10 @@ const authHeader = (token) =>
 
 export const apiClient = {
   async register(payload) {
+    if (preferLocalMode) {
+      return localDb.register(payload);
+    }
+
     try {
       const { data } = await api.post('/auth/register', payload);
       return { ...data, offlineMode: false };
@@ -45,6 +54,10 @@ export const apiClient = {
   },
 
   async login(payload) {
+    if (preferLocalMode) {
+      return localDb.login(payload);
+    }
+
     try {
       const { data } = await api.post('/auth/login', payload);
       return { ...data, offlineMode: false };
@@ -58,7 +71,7 @@ export const apiClient = {
   },
 
   async me(token) {
-    if (isLocalToken(token)) {
+    if (shouldUseLocalDb(token)) {
       return localDb.me(token);
     }
 
@@ -75,7 +88,7 @@ export const apiClient = {
   },
 
   async listHabits(token) {
-    if (isLocalToken(token)) {
+    if (shouldUseLocalDb(token)) {
       return localDb.listHabits(token);
     }
 
@@ -92,7 +105,7 @@ export const apiClient = {
   },
 
   async saveHabit(token, habit) {
-    if (isLocalToken(token)) {
+    if (shouldUseLocalDb(token)) {
       return localDb.saveHabit(token, habit);
     }
 
@@ -112,7 +125,7 @@ export const apiClient = {
   },
 
   async deleteHabit(token, habitId) {
-    if (isLocalToken(token)) {
+    if (shouldUseLocalDb(token)) {
       return localDb.deleteHabit(token, habitId);
     }
 
@@ -129,7 +142,7 @@ export const apiClient = {
   },
 
   async toggleHabit(token, habitId, date) {
-    if (isLocalToken(token)) {
+    if (shouldUseLocalDb(token)) {
       return localDb.toggleHabit(token, habitId, date);
     }
 
@@ -146,7 +159,7 @@ export const apiClient = {
   },
 
   async reorderHabits(token, orderedIds) {
-    if (isLocalToken(token)) {
+    if (shouldUseLocalDb(token)) {
       return localDb.reorderHabits(token, orderedIds);
     }
 
@@ -163,7 +176,7 @@ export const apiClient = {
   },
 
   async getEntry(token, date) {
-    if (isLocalToken(token)) {
+    if (shouldUseLocalDb(token)) {
       return localDb.getEntry(token, date);
     }
 
@@ -180,7 +193,7 @@ export const apiClient = {
   },
 
   async listEntries(token, filters = {}) {
-    if (isLocalToken(token)) {
+    if (shouldUseLocalDb(token)) {
       return localDb.listEntries(token, filters);
     }
 
@@ -200,7 +213,7 @@ export const apiClient = {
   },
 
   async saveEntry(token, date, payload) {
-    if (isLocalToken(token)) {
+    if (shouldUseLocalDb(token)) {
       return localDb.saveEntry(token, date, payload);
     }
 
@@ -217,7 +230,7 @@ export const apiClient = {
   },
 
   async exportData(token) {
-    if (isLocalToken(token)) {
+    if (shouldUseLocalDb(token)) {
       return localDb.exportData(token);
     }
 
@@ -230,7 +243,7 @@ export const apiClient = {
   },
 
   async importData(token, payload) {
-    if (isLocalToken(token)) {
+    if (shouldUseLocalDb(token)) {
       return localDb.importData(token, payload);
     }
 
