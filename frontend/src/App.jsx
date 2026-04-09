@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import { AppShell } from './components/AppShell';
 import { AuthPage } from './pages/AuthPage';
 import { CalendarPage } from './pages/CalendarPage';
@@ -42,6 +42,7 @@ function PublicRoute() {
 export default function App() {
   const initializeApp = useAppStore((state) => state.initializeApp);
   const hasInitialized = useRef(false);
+  const Router = import.meta.env.BASE_URL === '/' ? BrowserRouter : HashRouter;
 
   useEffect(() => {
     if (hasInitialized.current) {
@@ -53,7 +54,7 @@ export default function App() {
   }, [initializeApp]);
 
   return (
-    <BrowserRouter>
+    <Router basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route path="/auth" element={<PublicRoute />} />
 
@@ -69,6 +70,6 @@ export default function App() {
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }

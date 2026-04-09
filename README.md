@@ -83,6 +83,30 @@ If MongoDB or the backend is unavailable, the frontend falls back to local demo 
 - Email: `demo@habittrack.app`
 - Password: `demo12345`
 
+## 🌍 Déploiement sur GitHub Pages
+
+Le projet est maintenant configuré pour publier automatiquement le **frontend** sur GitHub Pages via GitHub Actions.
+
+### URL prévue
+
+```text
+https://rachadelbaraka.github.io/HabitTrack/
+```
+
+### Activation
+
+1. Poussez vos changements sur la branche `main`
+2. Ouvrez **GitHub > Settings > Pages**
+3. Dans **Build and deployment**, choisissez **GitHub Actions**
+4. Le workflow `.github/workflows/deploy-pages.yml` fera le build et le déploiement automatiquement
+
+### Important
+
+- **GitHub Pages héberge seulement le frontend statique**
+- Le backend `Express + MongoDB` ne peut pas tourner sur GitHub Pages
+- En l’état, le site fonctionnera donc très bien en **mode hors ligne / démo**
+- Si vous voulez l’auth et la base en ligne, il faudra déployer le backend séparément sur **Render**, **Railway**, **Vercel Functions** ou un VPS, puis renseigner `VITE_API_URL`
+
 ## 💡 Notes
 
 - Daily habits reset automatically because completion is tracked by date.
