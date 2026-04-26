@@ -2,7 +2,7 @@
 
 HabitTrack is a full-stack **Habit Tracker + Daily Journal** web app built as a premium SaaS-style experience.
 
-## ✨ Features
+##  Features
 
 - JWT authentication (`register` / `login`)
 - Daily + weekly habits with reorder, color, icon, and reminders
@@ -14,12 +14,12 @@ HabitTrack is a full-stack **Habit Tracker + Daily Journal** web app built as a 
 - PWA-ready frontend with installable service worker
 - Export/import JSON data
 
-## 🧱 Stack
+##  Stack
 
 - **Frontend:** React + Vite + Tailwind CSS + Zustand + Framer Motion + Recharts
 - **Backend:** Node.js + Express + MongoDB + Mongoose + JWT
 
-## 📁 Project structure
+##  Project structure
 
 ```text
 frontend/   React client
@@ -27,7 +27,7 @@ backend/    Express API
 .env.example shared environment example
 ```
 
-## 🚀 Run locally
+##  Run locally
 
 ### 1) Configure environment
 
@@ -62,7 +62,7 @@ npm run dev
 - Frontend: `http://localhost:5173`
 - Backend: `http://localhost:5000`
 
-## 🔐 API overview
+##  API overview
 
 - `POST /api/auth/register`
 - `POST /api/auth/login`
@@ -74,7 +74,7 @@ npm run dev
 - `GET /api/entries`
 - `GET /api/stats/overview`
 
-## 🧪 Demo / fallback mode
+##  Demo / fallback mode
 
 If MongoDB or the backend is unavailable, the frontend falls back to local demo storage.
 
@@ -83,7 +83,7 @@ If MongoDB or the backend is unavailable, the frontend falls back to local demo 
 - Email: `demo@habittrack.app`
 - Password: `demo12345`
 
-## 🌍 Déployer toute l’application
+##  Déployer toute l’application
 
 J’ai préparé le dépôt pour un déploiement **full-stack** simple sur **Render** : le backend Express sert aussi le frontend React construit en production.
 
